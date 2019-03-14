@@ -9,7 +9,7 @@ url-encode() {
     echo "  Example: url-encode 'This & that!'"
     echo "  Output: This%20%26%20that%21"
   else
-    python -c $'try: import urllib.parse as urllib\nexcept: import urllib\nimport sys\nsys.stdout.write(urllib.quote(sys.argv[1]))' "${1:-$(</dev/stdin)}"
+    python -c $'try: import urllib.parse as urllib\nexcept: import urllib\nimport sys\nprint(urllib.quote(sys.argv[1]))' "${1:-$(</dev/stdin)}"
   fi
 }
 
@@ -20,6 +20,6 @@ url-decode() {
     echo "  Examle: url-decode This%20%26%20that%21"
     echo "  Output: This & that!"
   else
-    python -c $'try: import urllib.parse as urllib\nexcept: import urllib\nimport sys\nsys.stdout.write(urllib.unquote(sys.argv[1]))' "${1:-$(</dev/stdin)}"
+    python -c $'try: import urllib.parse as urllib\nexcept: import urllib\nimport sys\nprint(urllib.unquote(sys.argv[1]))' "${1:-$(</dev/stdin)}"
   fi
 }
